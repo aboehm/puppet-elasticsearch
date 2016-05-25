@@ -1,0 +1,14 @@
+{
+  "name": "aboehm/elasticsearch",
+  "version": "0.1.0",
+  "author": "Alexander Böhm",
+  "summary": "Install and configure elasticsearch",
+  "license": "Apache 2.0",
+  "source": "https://github.com/aboehm/puppet-module-elasticsearch",
+  "project_page": "https://github.com/aboehm/puppet-module-elasticsearch",
+  "issues_url": "https://github.com/aboehm/puppet-module-elasticsearch/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
