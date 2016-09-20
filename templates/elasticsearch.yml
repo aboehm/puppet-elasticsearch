@@ -1,0 +1,20 @@
+node.rack: <%= @node_rack %>
+node.name: <%= @node_name %> 
+cluster.name: <%= @cluster_name %>
+node.master: <%= @master_node %>
+node.data: <%= @data_node %>
+
+index.number_of_shards: <%= @index_shards %>
+index.number_of_replicas: <%= @index_replicas %>
+index.refresh_interval: <%= @index_refresh %>ms
+
+bootstrap.mlockall: true 
+
+network.bind_host: <%= @interface %>
+
+http.enabled: <%= @http_enable %>
+discovery.zen.enabled: <%= @zen_discovery %>
+<% if not @default_tokenizer.nil? -%>
+index.analysis.analyzer.default.tokenizer: <%= @default_tokenizer %>
+<% end -%>
+

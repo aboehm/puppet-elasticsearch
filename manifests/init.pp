@@ -1,41 +1,49 @@
-# == Class: elasticsearch
+# Class: elasticsearch
 #
-# Full description of class elasticsearch here.
+# management of elasticsearch installation
 #
-# === Parameters
-#
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
-#
-# === Variables
-#
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
-#
-# === Examples
-#
-#  class { 'elasticsearch':
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
-#
-# === Authors
-#
-# Author Name <author@domain.com>
-#
-# === Copyright
-#
-# Copyright 2016 Your name here, unless otherwise noted.
-#
-class elasticsearch {
 
+class elasticsearch (
+  $ensure    = $elasticsearch::params::ensure,
+  $enable    = $elasticsearch::params::enable,
+  $running   = $elasticsearch::params::running,
+  $release   = $elasticsearch::params::release,
+) inherits elasticsearch::params {
 
+  validate_re($ensure, 'present|installed|purged|absent|held|latest')
+  validate_bool($enable, true, false)
+  validate_re($running, 'running|stopped')
+
+  anchor { 'elasticsearch::begin': } ->
+  Class['elastic::key'] -> 
+  Class['elasticsearch::repo'] ->
+  Class['java'] ->
+  Class['elasticsearch::install'] ->
+  Class['elasticsearch::config'] ->
+  Class['elasticsearch::service'] ->
+  anchor { 'elasticsearch::end': }
+
+  ensure_resource( 'class', 'elastic::key', {
+    ensure  => $ensure,
+  } )
+
+  ensure_resource( 'class', 'elasticsearch::repo', {
+    ensure  => $ensure,
+    release => $release,
+  } )
+
+  ensure_resource( 'class', 'elasticsearch::install', {
+    ensure => $ensure,
+  } )
+
+  ensure_resource( 'class', 'elasticsearch::config', {
+    ensure    => $ensure,
+  } )
+
+  ensure_resource( 'class', 'elasticsearch::service', {
+    enable        => $enable,
+    running       => $running,
+  } )
 }
+
+# vi: set ft=puppet expandtab shiftwidth=2 tabstop=2 :
