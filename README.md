@@ -67,6 +67,7 @@ Include elasticsearch module and configure with hiera.
 * `elasticsearch::install`: Install/remove package
 * `elasticsearch::params`: Basic parameters of module
 * `elasticsearch::repo`: Manage repository
+* `elasticsearch::service`: Service management
 
 ## Limitations
 

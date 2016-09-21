@@ -1,7 +1,16 @@
-# Class: elasticsearch
+# == Class: elasticsearch
 #
-# management of elasticsearch installation
+# Management of elasticsearch installation.
 #
+# === Authors
+#
+# Alexander Böhm <alxndr.boehm@gmail.com>
+#
+# === Copyright
+#
+# Copyright 2016 Alexander Böhm
+#
+
 
 class elasticsearch (
   $ensure    = $elasticsearch::params::ensure,
