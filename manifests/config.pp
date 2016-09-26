@@ -1,6 +1,14 @@
-# Class: elasticsearch::config
+# == Class: elasticsearch::config
 #
-# Configures elasticsearch
+# Configures elasticsearch.
+#
+# === Authors
+#
+# Alexander Böhm <alxndr.boehm@gmail.com>
+#
+# === Copyright
+#
+# Copyright 2016 Alexander Böhm
 #
 
 class elasticsearch::config (

@@ -11,7 +11,6 @@
 # Copyright 2016 Alexander Böhm
 #
 
-
 class elasticsearch (
   $ensure    = $elasticsearch::params::ensure,
   $enable    = $elasticsearch::params::enable,
@@ -23,6 +22,9 @@ class elasticsearch (
   validate_bool($enable, true, false)
   validate_re($running, 'running|stopped')
 
+  include elastic
+  include java
+
   anchor { 'elasticsearch::begin': } ->
   Class['elastic::key'] -> 
   Class['elasticsearch::repo'] ->
@@ -31,10 +33,6 @@ class elasticsearch (
   Class['elasticsearch::config'] ->
   Class['elasticsearch::service'] ->
   anchor { 'elasticsearch::end': }
-
-  ensure_resource( 'class', 'elastic::key', {
-    ensure  => $ensure,
-  } )
 
   ensure_resource( 'class', 'elasticsearch::repo', {
     ensure  => $ensure,

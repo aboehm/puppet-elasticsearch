@@ -1,6 +1,14 @@
-# Class: elasticsearch::params
+# == Class: elasticsearch::params
 #
-# Standard values for parameters
+# Definition of standard parameters.
+#
+# === Authors
+#
+# Alexander Böhm <alxndr.boehm@gmail.com>
+#
+# === Copyright
+#
+# Copyright 2016 Alexander Böhm
 #
 
 class elasticsearch::params {

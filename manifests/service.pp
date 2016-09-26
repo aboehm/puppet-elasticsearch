@@ -1,6 +1,14 @@
-# Class: elasticsearch::service
+# == Class: elasticsearch::service
 #
-# manage service definition of elasticsearch
+# Service management.
+#
+# === Authors
+#
+# Alexander Böhm <alxndr.boehm@gmail.com>
+#
+# === Copyright
+#
+# Copyright 2016 Alexander Böhm
 #
 
 class elasticsearch::service (

@@ -1,6 +1,14 @@
-# Class: elasticsearch::repo
+# == Class: elasticsearch::repo
 #
-# manage elasticsearch repository
+# Repository management.
+#
+# === Authors
+#
+# Alexander Böhm <alxndr.boehm@gmail.com>
+#
+# === Copyright
+#
+# Copyright 2016 Alexander Böhm
 #
 
 class elasticsearch::repo (
