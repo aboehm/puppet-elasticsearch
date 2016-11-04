@@ -26,8 +26,9 @@ class elasticsearch (
   include java
 
   anchor { 'elasticsearch::begin': } ->
-  Class['elastic::key'] -> 
+  Class['elastic::key'] ->
   Class['elasticsearch::repo'] ->
+  Class['apt::update'] ->
   Class['java'] ->
   Class['elasticsearch::install'] ->
   Class['elasticsearch::config'] ->
