@@ -17,7 +17,7 @@ class elasticsearch::params {
   $release           = "2.x"
   $running           = running
 
-  if $::memorysize_mb >= 32768 {
+  if (0 + $::memorysize_mb) >= 32768 {
     $heap_size = "31g"
   } else {
     $suggest_size = $::memorysize_mb * 0.90
