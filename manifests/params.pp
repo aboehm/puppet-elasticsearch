@@ -14,7 +14,6 @@
 class elasticsearch::params {
   $ensure            = present
   $enable            = true
-  $release           = "2.x"
   $running           = running
 
   if (0 + $::memorysize_mb) >= 32768 {
@@ -40,12 +39,21 @@ class elasticsearch::params {
 
   $index_shards      = 5
   $index_replicas    = 1
-  $index_refresh     = "100"
+  $index_refresh     = '100'
 
-  $interface         = "127.0.0.1"
+  $interface         = '127.0.0.1'
+
   $http_enable       = true
-  $zen_discovery     = false
+  $http_port         = 9200
+  $http_interface    = '127.0.0.1'
+  $http_cors         = true
+  $http_cors_origin  = undef
+
+  $zen_discovery_min_hosts = 0
+
   $default_tokenizer = "keyword"
+
+  $memory_lock       = true
 }
 
 # vi: set ft=puppet expandtab shiftwidth=2 tabstop=2 :

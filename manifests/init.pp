@@ -26,19 +26,13 @@ class elasticsearch (
   include java
 
   anchor { 'elasticsearch::begin': } ->
-  Class['elastic::key'] ->
-  Class['elasticsearch::repo'] ->
+  Class['elastic::repo'] ->
   Class['apt::update'] ->
   Class['java'] ->
   Class['elasticsearch::install'] ->
   Class['elasticsearch::config'] ->
   Class['elasticsearch::service'] ->
   anchor { 'elasticsearch::end': }
-
-  ensure_resource( 'class', 'elasticsearch::repo', {
-    ensure  => $ensure,
-    release => $release,
-  } )
 
   ensure_resource( 'class', 'elasticsearch::install', {
     ensure => $ensure,

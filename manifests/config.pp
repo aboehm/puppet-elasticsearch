@@ -28,10 +28,19 @@ class elasticsearch::config (
   $index_replicas    = $elasticsearch::params::index_replicas,
   $index_refresh     = $elasticsearch::params::index_refresh,
 
-  $interface         = $elasticsearch::params::interface,
-  $http_enable       = $elasticsearch::params::http_enable,
-  $zen_discovery     = $elasticsearch::params::zen_discovery,
-  $default_tokenizer = $elasticsearch::params::default_tokenizer,
+  $interface               = $elasticsearch::params::interface,
+
+  $http_enable             = $elasticsearch::params::http_enable,
+  $http_port               = $elasticsearch::params::http_port,
+  $http_interface          = $elasticsearch::params::http_interface,
+  $http_cors               = $elasticsearch::params::http_cors,
+  $http_cors_origin        = $elasticsearch::params::http_cors_origin,
+
+  $zen_discovery_min_hosts = $elasticsearch::params::zen_discovery_min_hosts,
+
+  $memory_lock	           = $elasticsearch::params::memory_lock,
+
+  $default_tokenizer       = $elasticsearch::params::default_tokenizer,
 
   $user              = $elasticsearch::params::user,
   $group             = $elasticsearch::params::group,

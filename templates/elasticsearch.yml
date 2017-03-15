@@ -1,20 +1,20 @@
-node.rack: <%= @node_rack %>
+node.attr.rack: <%= @node_rack %>
 node.name: <%= @node_name %> 
 cluster.name: <%= @cluster_name %>
 node.master: <%= @master_node %>
 node.data: <%= @data_node %>
 
-index.number_of_shards: <%= @index_shards %>
-index.number_of_replicas: <%= @index_replicas %>
-index.refresh_interval: <%= @index_refresh %>ms
+bootstrap.memory_lock: <%= @memory_lock %>
 
-bootstrap.mlockall: true 
-
-network.bind_host: <%= @interface %>
+network.host: <%= @interface %> 
 
 http.enabled: <%= @http_enable %>
-discovery.zen.enabled: <%= @zen_discovery %>
-<% if not @default_tokenizer.nil? -%>
-index.analysis.analyzer.default.tokenizer: <%= @default_tokenizer %>
+http.port: <%= @http_port %>
+http.bind_host: <%= @http_interface %>
+http.cors.enabled: <%= @http_cors %>
+<% unless @http_cors_origin.nil? %>
+http.cors.allow-origin: <%= @http_cors_origin %>
 <% end -%>
+
+discovery.zen.minimum_master_nodes: <%= @zen_discovery_min_hosts %>
 
